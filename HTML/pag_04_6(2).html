@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Conditionals</title>
+</head>
+
+<body>
+    <script>
+        const age = -5;
+
+        if (age >= 18) {
+            document.write("You're of age");
+        } else if (age > 0 && age < 18) {
+            document.write("You're a minor");
+        } else {
+            document.write("Incorrect age");
+        }
+
+        document.write("<p>");
+
+        var neighborhood = "Castilla";
+
+        switch (neighborhood) {
+            case "Poblado":
+                document.write("You live in Poblado");
+                break;
+            case "Belen":
+                document.write("You live in " + neighborhood);
+                break;
+            default:
+                document.write("You live another neighborhood");
+                break;
+        }
+    </script>
+</body>
+
+</html>
