@@ -10,8 +10,6 @@
 
 <body>
     <script>
-        /*const, se utiliza para crear constantes*/
-
         //let para variable local
         for (let i = 1; i <= 10; i++) {
             document.write("i: " + i + "<br>");
@@ -41,14 +39,20 @@
             "December",
         ];
 
-        for (var i = 0; i < months.length; i++) {
-            document.write("months[" + (i + 1) + "]: " + months[i] + "<br>"); //months[1]
+        for (let j = 0; j < months.length; j++) {
+            document.write("months[" + (j + 1) + "]: " + months[j] + "<br>"); //months[1]
         }
 
-        document.write("<p>");
+        document.write("<p>Imprime con el in:</p>");
 
         for (i in months) {
-            document.write(months[i] + "<br>");
+            document.write(i + "<br>");
+        }
+
+        document.write("<p>Imprime con el of:</p>");
+
+        for (mes of months) {
+            document.write(mes + "<br>");
         }
     </script>
 </body>
