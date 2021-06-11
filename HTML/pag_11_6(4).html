@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/classes_CSS/css/bootstrap.css" />
+    <link rel="shortcut icon" href="/classes_CSS/images/logoJS.jpg" type="image/x-icon">
+    <title>Formulario Operaciones</title>
+</head>
+
+<body>
+    <div class="text-uppercase d-flex justify-content-center">
+        <form action="" name="formulario" id="formulario">
+            <div class="form-group shadow-lg p-2 mb-8 bg-white rounded">
+                <label for="numero1">Número 1</label>
+                <input type="number" class="form-control" id="numero1" name="numero1" autofocus/>
+            </div>
+            <div class="form-group shadow-lg p-2 mb-8 bg-white rounded">
+                <label for="numero2">Número 2</label>
+                <input type="number" class="form-control" id="numero2" name="numero2" />
+            </div>
+            <div class="form-group shadow-lg p-2 mb-8 bg-white rounded">
+                <div class="alert alert-primary" role="alert">Operaciones</div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="align-baseline"><input type="radio" name="operaciones" id="suma" value="suma" /></td>
+                            <td class="align-baseline"><label for="suma">Suma</label></td>
+                            <td class="align-baseline"><input type="radio" name="operaciones" id="resta" value="resta" /></td>
+                            <td class="align-baseline"><label for="resta">Resta</label></td>
+                            <td class="align-baseline"><input type="radio" name="operaciones" id="multiplicacion" value="multiplicacion" /></td>
+                            <td class="align-baseline"><label for="multiplicacion">Multiplicación</label></td>
+                            <td class="align-baseline"><input type="radio" name="operaciones" id="division" value="division" /></td>
+                            <td class="align-baseline"><label for="division">División</label></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-group shadow-lg p-2 mb-8 bg-white rounded">
+                <label for="resultado">Resultado</label>
+                <input type="number" class="form-control" id="resultado" readonly />
+            </div>
+            <div class="d-flex justify-content-around">
+                <input type="submit" class="btn btn-primary" value="Ejecutar" />
+                <input type="reset" class="btn btn-primary" value="Limpiar" />
+            </div>
+        </form>
+    </div>
+
+    <script>
+        var form = document.getElementById("formulario");
+        var numero1 = form.numero1;
+        var numero2 = form.numero2;
+        var operacion = form.operaciones;
+
+        function operaciones(e) {
+            if (numero1.value == "") {
+                /*swal("Error!", "Escriba el número 1", "error"); Refresca la página*/
+                alert("Escriba el número 1");
+                numero1.focus();
+            } else if (numero2.value == "") {
+                /*swal("Error!", "Escriba el número 2", "error");*/
+                numero2.focus();
+            } else if ((numero1.value < 0) || (numero2.value < 0)) {
+                swal("Error!", "Solo se permiten números positivos.", "error");
+                document.getElementById("formulario").reset(); //limpia el formulario
+            } else if (operacion.value == "") {
+                swal("Error! ", "Seleccione una operación", "error");
+            } else {
+                /*document.getElementById("numero1").disabled = true;
+                document.getElementById("numero2").disabled = true;*/
+                switch (operacion.value) {
+                    case "suma":
+                        alert(parseInt(numero1.value) + parseInt(numero2.value));
+                        document.getElementById("resultado").value = parseInt(numero1.value) + parseInt(numero2.value);
+                        break;
+                    case "resta":
+                        document.getElementById("resultado").value = parseInt(numero1.value) - parseInt(numero2.value);
+                        break;
+                    case "multiplicacion":
+                        document.getElementById("resultado").value = parseInt(numero1.value) * parseInt(numero2.value);
+                        break;
+                    case "division":
+                        if (parseInt(numero2.value) != 0) {
+                            document.getElementById("resultado").value = parseInt(numero1.value) / parseInt(numero2.value);
+                        } else {
+                            swal("Error! ", "El dividendo no puede ser 0", "error");
+                            alert("El dividendo no puede ser 0");
+                            document.getElementById("numero1").disabled = true;
+                            numero2.focus();
+                        }
+                        break;
+                }
+            }
+            e.preventDefault(); //método que muestra la alerta del error
+        }
+
+        form.addEventListener("submit", operaciones);
+
+        function limpiar(e) {
+            document.getElementById("numero1").disabled = false;
+            document.getElementById("numero2").disabled = false;
+            form.clear();
+            e.preventDefault();
+        }
+        form.addEventListener("reset", limpiar);
+    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
+</body>
+
+</html>

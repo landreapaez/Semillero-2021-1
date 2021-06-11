@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cycle while</title>
+</head>
+
+<body>
+    <script>
+        (function() {
+            let num = 1;
+            while (num <= 10) {
+                document.write("num: " + num + "<br>");
+                num++;
+            }
+
+            document.write("<p>");
+
+            do {
+                document.write("num: " + num + "<br>");
+                num--;
+            } while (num > 0);
+        })();
+    </script>
+</body>
+
+</html>
